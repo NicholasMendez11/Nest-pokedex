@@ -9,9 +9,11 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+      transform: true, //Transforma los datos a su tipo de dato correspondiente (ej: un string a un numero)
+      transformOptions: { enableImplicitConversion: true }, //Habilita la conversion implicita de los datos (ej: un string a un numero)
     }),
   );
   app.setGlobalPrefix('/api/v2'); //Aqui se define el prefijo de la api
-  await app.listen(3000);
+  await app.listen(process.env.PORT);
 }
 bootstrap();
